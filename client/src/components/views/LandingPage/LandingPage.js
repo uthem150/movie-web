@@ -37,8 +37,8 @@ export default function LandingPage() {
         <h2>Movies by latest</h2>
         <hr />
 
-        {/* movie grid cards */}
-        <Row>
+        {/* movie grid cards - gutter로 상하좌우 여백 생성*/}
+        <Row gutter={[16, 16]}>
           {movies &&
             movies.map((movie, index) => (
               <React.Fragment key={index}>
