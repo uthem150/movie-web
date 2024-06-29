@@ -8,19 +8,32 @@ import { Row } from "antd";
 export default function LandingPage() {
   const [movies, setMovies] = useState([]); // 인기 영화들 담을 배열
   const [mainImage, setMainImage] = useState(null); // 가장 인기있는 영화의 이미지
+  const [currentPage, setCurrentPage] = useState(0);
 
-  // 영화 정보 가져오기
+  // 처음 로드될 때, 영화 정보 가져오기
   useEffect(() => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=1`; //20개의 가장 유명한 영화들 가져옴
+    fetchMovies(endpoint);
+  }, []);
 
+  // load more 버튼을 눌렀을 때, 추가 영화 목록 가져오기
+  const loadMoreItems = () => {
+    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=ko&page=${
+      currentPage + 1
+    }`;
+    fetchMovies(endpoint);
+  };
+
+  const fetchMovies = (endpoint) => {
     fetch(endpoint)
       .then((response) => response.json()) //json메소드로 받아온 응답을 json화
       .then((response) => {
         // console.log(response);
-        setMovies([...response.results]); //받은 응답을 movies에 저장
+        setMovies([...movies, ...response.results]); //받은 응답을 movies에 추가
         setMainImage(response.results[0]);
+        setCurrentPage(response.page); // 처음 받아온 페이지 정보로, state 설정
       });
-  }, []);
+  };
 
   return (
     <div style={{ width: "100%", margin: "0" }}>
@@ -56,7 +69,7 @@ export default function LandingPage() {
         </Row>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <button>Load more</button>
+        <button onClick={loadMoreItems}>Load more</button>
       </div>
     </div>
   );
