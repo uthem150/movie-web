@@ -12,10 +12,6 @@ function MovieDetail(props) {
   const [casts, setCasts] = useState([]); // 출연진 info
   const [actorToggle, setActorToggle] = useState(false);
 
-  if (casts) {
-    console.log(casts);
-  }
-
   useEffect(() => {
     let endpointCast = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=ko`;
     let endpointInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}&language=ko`;
