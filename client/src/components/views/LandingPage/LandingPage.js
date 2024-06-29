@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FaCode } from "react-icons/fa";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import MainImage from "./Sections/MainImage";
+import GridCards from "../commons/GridCards";
+import { Row } from "antd";
 
-function LandingPage() {
+export default function LandingPage() {
   const [movies, setMovies] = useState([]); // 인기 영화들 담을 배열
   const [mainImage, setMainImage] = useState(null); // 가장 인기있는 영화의 이미지
 
@@ -36,6 +38,22 @@ function LandingPage() {
         <hr />
 
         {/* movie grid cards */}
+        <Row>
+          {movies &&
+            movies.map((movie, index) => (
+              <React.Fragment key={index}>
+                <GridCards
+                  image={
+                    movie.poster_path //포스터 이미지가 있다면 보여주고 없으면, null
+                      ? `${IMAGE_BASE_URL}w500${movie.poster_path}`
+                      : null
+                  }
+                  movieId={movie.id}
+                  movieName={movie.original_title}
+                />
+              </React.Fragment>
+            ))}
+        </Row>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <button>Load more</button>
@@ -43,5 +61,3 @@ function LandingPage() {
     </div>
   );
 }
-
-export default LandingPage;

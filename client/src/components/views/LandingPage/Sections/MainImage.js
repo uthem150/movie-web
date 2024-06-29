@@ -24,7 +24,7 @@ export default function MainImage(props) {
           }}
         >
           <h2 style={{ color: "white" }}>{props.title}</h2>
-          <p style={{ color: "white", fontSize: "1rem" }}>{props.text}</p>
+          <p style={{ color: "white", fontSize: "0.8rem" }}>{props.text}</p>
         </div>
       </div>
     </div>
