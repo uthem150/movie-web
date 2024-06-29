@@ -56,6 +56,7 @@ export default function LandingPage() {
             movies.map((movie, index) => (
               <React.Fragment key={index}>
                 <GridCards
+                  landingPage
                   image={
                     movie.poster_path //포스터 이미지가 있다면 보여주고 없으면, null
                       ? `${IMAGE_BASE_URL}w500${movie.poster_path}`
