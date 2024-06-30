@@ -3,7 +3,7 @@ import { FaCode } from "react-icons/fa";
 import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import MainImage from "./Sections/MainImage";
 import GridCards from "../commons/GridCards";
-import { Row } from "antd";
+import { Button, Row } from "antd";
 
 export default function LandingPage() {
   const [movies, setMovies] = useState([]); // 인기 영화들 담을 배열
@@ -70,7 +70,7 @@ export default function LandingPage() {
         </Row>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <button onClick={loadMoreItems}>Load more</button>
+        <Button onClick={loadMoreItems}>Load more</Button>
       </div>
     </div>
   );

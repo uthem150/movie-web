@@ -3,7 +3,7 @@ import { API_KEY, API_URL, IMAGE_BASE_URL } from "../../Config";
 import { useParams } from "react-router-dom";
 import MainImage from "../LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
-import { Row } from "antd";
+import { Button, Row } from "antd";
 import GridCards from "../commons/GridCards";
 import Favorite from "./Sections/Favorite";
 
@@ -56,7 +56,7 @@ function MovieDetail(props) {
         <div
           style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
         >
-          <button onClick={toggleActorView}>Toggle Actor View</button>
+          <Button onClick={toggleActorView}>Toggle Actor View</Button>
         </div>
         {actorToggle && (
           <Row gutter={[16, 16]}>
