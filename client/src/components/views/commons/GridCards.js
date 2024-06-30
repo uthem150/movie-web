@@ -7,11 +7,17 @@ export default function GridCards(props) {
     return (
       // large size일때는 6 (한 column에 24size이므로, 4개씩 넣는다는 뜻)
       <Col lg={6} md={8} xs={24}>
-        <div style={{ position: "relative" }}>
+        <div
+          style={{
+            position: "relative",
+            height: "400px",
+            marginBottom: "10px",
+          }}
+        >
           <a href={`/movie/${props.movieId}`}>
             {props.image ? (
               <img
-                style={{ width: "100%", height: "320px" }}
+                style={{ width: "100%", height: "100%" }}
                 src={props.image}
                 alt={props.movieName}
               />
@@ -20,7 +26,7 @@ export default function GridCards(props) {
                 style={{
                   width: "100%",
                   height: "220px",
-                  paddingTop: " 1rem",
+                  paddingTop: " 2rem",
                 }}
               >
                 <svg
@@ -59,8 +65,14 @@ export default function GridCards(props) {
   } else {
     // 배우 정보에 대한 grid
     return (
-      <Col lg={4} md={6} xs={8}>
-        <div style={{ position: "relative" }}>
+      <Col lg={4} md={6} xs={12}>
+        <div
+          style={{
+            position: "relative",
+            height: "300px",
+            marginBottom: "10px",
+          }}
+        >
           <a
             href={`/person/${props.id}`}
             style={{ textDecoration: "none", color: "black" }} // 링크 스타일 수정
@@ -69,9 +81,10 @@ export default function GridCards(props) {
               <img
                 style={{
                   width: "100%",
-                  height: "250px",
+                  height: "90%",
                   borderRadius: "5px",
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  objectFit: "cover",
                 }}
                 src={props.image}
                 alt={props.castName}
@@ -79,9 +92,11 @@ export default function GridCards(props) {
             ) : (
               <div
                 style={{
+                  borderRadius: "5px",
                   width: "100%",
-                  height: "220px",
-                  paddingTop: " 1rem",
+                  height: "90%",
+                  paddingTop: " 2.5rem",
+                  paddingBottom: " 2.3rem",
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                 }}
               >

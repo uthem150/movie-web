@@ -43,6 +43,7 @@ export default function PersonDetail(props) {
         {personInfo.profile_path ? (
           <div
             style={{
+              width: "100%",
               display: "flex",
               justifyContent: "center",
               marginTop: " 5px",
@@ -50,7 +51,7 @@ export default function PersonDetail(props) {
           >
             <img
               style={{
-                width: "17%",
+                width: "15%",
                 height: "auto",
                 borderRadius: "5px",
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
