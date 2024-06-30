@@ -5,6 +5,7 @@ import MainImage from "../LandingPage/Sections/MainImage";
 import MovieInfo from "./Sections/MovieInfo";
 import { Row } from "antd";
 import GridCards from "../commons/GridCards";
+import Favorite from "./Sections/Favorite";
 
 function MovieDetail(props) {
   let { movieId } = useParams(); //movieId를 가져오는 부분
@@ -40,6 +41,14 @@ function MovieDetail(props) {
 
       {/* body */}
       <div style={{ width: "85%", margin: "1rem auto" }}>
+        {/* favorite 버튼 */}
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Favorite
+            movieInfo={movie}
+            movieId={movieId}
+            userFrom={localStorage.getItem("userId")}
+          />
+        </div>
         {/* Movie Info */}
         <MovieInfo movie={movie} /> {/*영화 detail정보 넘겨줌*/}
         <br />
