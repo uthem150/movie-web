@@ -9,6 +9,7 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import MovieDetail from "./views/MovieDetail/MovieDetail.js";
 import PersonDetail from "./views/MovieDetail/Sections/PersonDetail.js";
+import FavoritePage from "./views/FavoritePage/FavoritePage.js";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -34,6 +35,7 @@ function App() {
             path="/person/:personId"
             component={Auth(PersonDetail, null)}
           />
+          <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
         </Switch>
       </div>
       <Footer />

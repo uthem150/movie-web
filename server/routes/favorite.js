@@ -58,4 +58,25 @@ router.post("/addToFavorite", (req, res) => {
     return res.status(200).json({ success: true });
   });
 });
+
+router.post("/getFavoredMovie", (req, res) => {
+  //Favorite는 MongoDB의 컬렉션을 나타내는 Mongoose 모델
+  //클라이언트로부터 전달받은 userFrom 값을 기준으로 문서를 찾음
+  Favorite.find({ userFrom: req.body.userFrom }).exec((err, favorites) => {
+    if (err) return res.status(400).send(err);
+    //조회된 즐겨찾기 목록을 JSON 형식으로 클라이언트에 전송
+    return res.status(200).json({ success: true, favorites });
+  });
+});
+
+router.post("/removeFromFavorite", (req, res) => {
+  Favorite.findOneAndDelete({
+    movieId: req.body.movieId,
+    userFrom: req.body.userFrom,
+  }).exec((err, result) => {
+    if (err) return res.status(400).send(err);
+    return res.status(200).json({ success: true });
+  });
+});
+
 module.exports = router;
