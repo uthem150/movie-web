@@ -3,30 +3,31 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # 'main' 브랜치에 푸시될 때마다 실행
 
 jobs:
-  build-and-deploy:
+  build-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: "14" # 원하는 Node.js 버전
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./client
+        working-directory: ./client # client 디렉토리에서 명령 실행
 
-      - name: Build project
+      - name: Build the project
         run: npm run build
-        working-directory: ./client
+        working-directory: ./client # client 디렉토리에서 명령 실행
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
-        working-directory: ./client
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./client/build # 빌드된 파일이 있는 디렉토리
