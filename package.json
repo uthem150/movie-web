@@ -11,9 +11,11 @@
     "start": "node server/index.js",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "build": "npm run build --prefix client",
+    "deploy": "npm run build && npm start"
   },
-  "author": "John ahn",
+  "author": "uthem150",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
