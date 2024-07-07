@@ -8,12 +8,12 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "start": "node server/index.js",
-    "backend": "nodemon server/index.js",
-    "frontend": "npm run start --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && node server/index.js",
+    "backend": "set NODE_OPTIONS=--openssl-legacy-provider && nodemon server/index.js",
+    "frontend": "set NODE_OPTIONS=--openssl-legacy-provider && npm run start --prefix client",
+    "dev": "concurrently \"set NODE_OPTIONS=--openssl-legacy-provider && npm run backend\" \"set NODE_OPTIONS=--openssl-legacy-provider && npm run start --prefix client\""
   },
-  "author": "John ahn",
+  "author": "uthem150",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
