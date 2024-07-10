@@ -34,7 +34,7 @@
   
 ### 서비스
     - 회원가입
-    - Formik를 통한 인
+    - Formik를 통한 인증
     - 유저 로그인 (with JWT web token)
     - 영화 즐겨찾기 기능
   
